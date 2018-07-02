@@ -1,4 +1,8 @@
 <?php 
+  session_start();
+  if(isset($_SESSION['username'])){
+    header("location:index.php");
+  }
 	require_once 'header.php';
  ?>
 
@@ -34,6 +38,19 @@
               <div class="col-md-6">
                 <label for="exampleConfirmPassword">Confirm password</label>
                 <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password" name="ucpass">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <label for="exampleInputPassword1">User Type</label>
+                <select class="form-control" name="usertype">
+                  <option value="0">Please Select User Type</option>
+                  <option value="2">Hotel Woner</option>
+                  <option value="1">Customer</option>
+                </select>
               </div>
             </div>
           </div>

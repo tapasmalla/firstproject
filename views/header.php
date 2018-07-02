@@ -37,6 +37,10 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
+
+        <?php 
+          if(!isset($_SESSION['username'])):
+         ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="login.php">
             <i class="fa fa-fw fa-area-chart"></i>
@@ -49,20 +53,49 @@
             <span class="nav-link-text">Register</span>
           </a>
         </li>
+
+        <?php 
+          endif;
+         ?>
+
+         <?php 
+          if(isset($_SESSION['username'])):
+          ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">User Panel</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
+
+            <?php 
+              if($_SESSION['usertype'] == 2):
+             ?>
+            <li>
+              <a href="addhotel.php">Add Hotel</a>
+            </li>
+            <li>
+              <a href="addbranch.php">Add Branch</a>
+            </li>
+            <li>
+              <a href="addrooms.php">Add Rooms</a>
+            </li>
+
+            <?php 
+              endif;
+             ?>
             <li>
               <a href="changepassword.php">Change Password</a>
             </li>
             <li>
-              <a href="logout.php">Logout</a>
+              <a href="logout.php">Logout (<?php echo $_SESSION['username'] ?>)</a>
             </li>
           </ul>
         </li>
+
+        <?php 
+          endif;
+         ?>
        
       </ul>
       <ul class="navbar-nav sidenav-toggler">

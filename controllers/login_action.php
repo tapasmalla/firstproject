@@ -15,7 +15,7 @@
 		$pass = sha1($_REQUEST['upass']);
 
 		$result = $obj->select("us_password,us_status","pro_users","us_email='$email'");
-		pre($result);
+		// pre($result);
 		 if($result == 0){
 		 	echo "Invalid Email";
 		 }
@@ -24,6 +24,18 @@
 		 		echo "Please Verify Your Email";
 		 	}
 		 	else{
+
+		 		$result_userdata = $obj->get_user_details($_REQUEST['uemail']);
+		 		// pre($result_userdata);
+		 		// echo session_id();
+
+		 		$_SESSION['userid'] = $result_userdata[0]['us_id'];
+		 		$_SESSION['username'] = $result_userdata[0]['us_name'];
+		 		$_SESSION['usermobile'] = $result_userdata[0]['us_mobile'];
+		 		$_SESSION['useremail'] = $result_userdata[0]['us_email'];
+		 		$_SESSION['userstatus'] = $result_userdata[0]['us_status'];
+		 		$_SESSION['usertype'] = $result_userdata[0]['us_type'];
+
 		 		echo "ok";
 		 	}
 		 	

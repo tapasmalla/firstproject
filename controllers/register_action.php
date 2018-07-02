@@ -18,11 +18,16 @@
 		echo "Password Missmatch";
 	}
 
+	else if(empty($_REQUEST['usertype'])){
+		echo "Please Select User Type";
+	}
+
 	else{
 		// echo "ok";
 		$name = $_REQUEST['uname'];
 		$mobile = $_REQUEST['umobile'];
 		$email = $_REQUEST['uemail'];
+		$usertype = $_REQUEST['usertype'];
 		$pass = sha1($_REQUEST['upass']);
 
 
@@ -41,27 +46,27 @@
 			else{
 				$obj->insert(
 					"pro_users",
-					"us_name,us_mobile,us_email,us_password",
-					"'$name','$mobile','$email','$pass'"
+					"us_name,us_mobile,us_email,us_password,us_type",
+					"'$name','$mobile','$email','$pass','$usertype'"
 					);
 
-				echo "user added";
+				echo "ok";
 
-				// /*************email**********/
-				$to = $email;
-				$subject = "HTML email";
+				// // /*************email**********/
+				// $to = $email;
+				// $subject = "HTML email";
 
-				$message = "<a href=''> HELLO </a><b> TEST </b> <input type='text' />";
+				// $message = "<a href=''> HELLO </a><b> TEST </b> <input type='text' />";
 
-				// Always set content-type when sending HTML email
-				$headers = "MIME-Version: 1.0" . "\r\n";
-				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+				// // Always set content-type when sending HTML email
+				// $headers = "MIME-Version: 1.0" . "\r\n";
+				// $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-				// More headers
-				$headers .= 'From: <vishal@php-training.in>' . "\r\n";
+				// // More headers
+				// $headers .= 'From: <vishal@php-training.in>' . "\r\n";
 
-				$res = mail($to,$subject,$message,$headers);
-				var_dump($res);
+				// $res = mail($to,$subject,$message,$headers);
+				// var_dump($res);
 
 				/*************email**********/
 

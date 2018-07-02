@@ -13,6 +13,10 @@
 			);
 			// pre($this->conn);
 
+			if(session_id() == ""){
+				session_start();
+			}
+
 		}
 
 		function __destruct(){
